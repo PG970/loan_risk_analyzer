@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import joblib
-#import shap
+import shap
 import matplotlib.pyplot as plt
 
 # ---------------- CONFIG ----------------
@@ -126,12 +126,12 @@ if st.button("🚀 Predict Risk"):
     st.markdown("---")
 
     # ---------------- SHAP ----------------
-    #st.subheader("🔍 Explainable AI (SHAP)")
+    st.subheader("🔍 Explainable AI (SHAP)")
 
-    #shap_values = explainer.shap_values(input_data)
-    #fig, ax = plt.subplots()
-    #shap.plots._waterfall.waterfall_legacy(explainer.expected_value,shap_values[0],feature_names=X.columns)
-    #st.pyplot(fig)
+    shap_values = explainer.shap_values(input_data)
+    fig, ax = plt.subplots()
+    shap.plots._waterfall.waterfall_legacy(explainer.expected_value,shap_values[0],feature_names=X.columns)
+    st.pyplot(fig)
 
     # ---------------- INSIGHTS ----------------
     st.subheader("💡 Smart Insights")
